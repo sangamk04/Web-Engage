@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank_You</title>
+</head>
+
+<body>
+    <h1 style="text-align:center ;">Thanks a ton for taking out your precious time and for completing the survey</h1>
+    <div style="text-align:center ;" id="thank-you"></div>
+</body>
+
+</html>
+<script>
+    var contact = JSON.parse(localStorage.getItem("detail"))
+    console.log(contact)
+
+    document.querySelector("#thank-you").innerText = ""
+    contact.map((el) => {
+        var tr = document.createElement("div");
+
+        var tde = document.createElement("h1");
+        tde.innerText = `Email:-${el.email}`;
+
+
+        var trm = document.createElement("div")
+
+        var tdc = document.createElement("h1");
+        tdc.innerText = `CountryCode:-+${el.code.s.dialCode }`
+
+        var tdm = document.createElement("h1");
+        tdm.innerText = `Mobile No:-${el.mobile}`;
+
+
+
+        trm.append(tdc, tdm)
+        tr.append(tde, trm)
+
+        document.querySelector("#thank-you").append(tr);
+    })
+
+</script>

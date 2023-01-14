@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Engage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="web">
+
+        <div id="box1">
+            <img src="https://i.postimg.cc/Wzkfh3n4/Screenshot-2023-01-11-195053.png">
+        </div>
+        <!-- -----------------------------------left box-------------------------- -->
+        <div id="box2">
+            <div style="width: 50%; margin-left: 20%;"><img
+                    src="https://cdn.dribbble.com/users/196181/screenshots/1013347/media/21f07948bca387b570dc3ec53da8763c.jpg?compress=1&resize=400x300&vertical=top">
+            </div>
+
+            <h1 class="heading">Get a FREE</h1>
+            <p class="para">consultation with an expert</p>
+
+            <div id="form">
+                <form>
+
+                    <input type="email" name="email" autocomplete="off" id="email" style="width: 60%;"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Enter your email" required><br />
+                    <p id="myEmail"></p>
+                    <div style="width:100% ;">
+                        <input type="tel" placeholder="Enter your mobile" maxlength="10" required id="phone"><br />
+                        <p id="sam"></p>
+                    </div>
+
+                    <button type="submit">Talk to Us →</button>
+
+                </form>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <!-- <div id="box1">
+        <div style="width: 50%; border: 1px solid red;">
+            <img src="https://i.postimg.cc/Wzkfh3n4/Screenshot-2023-01-11-195053.png">
+        </div>
+
+        <div class="form">
+            <form>
+                <div style="margin-top:-5rem ;" class="row">
+                    <div style="width: 100%;"><img
+                            src="https://cdn.dribbble.com/users/196181/screenshots/1013347/media/21f07948bca387b570dc3ec53da8763c.jpg?compress=1&resize=400x300&vertical=top">
+                    </div>
+                    <h1 class="heading">Get a FREE</h1>
+                    <p class="para">consultation with an expert</p>
+                    <input type="email" name="email" autocomplete="off" id="email" style="width: 20rem;"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Enter your email" required><br />
+                    <p id="myEmail"></p>
+                </div>
+                <div class="row">
+                    <input type="tel" placeholder="Enter your mobile" maxlength="10" required id="phone"
+                        style="width: 22rem;"><br />
+                    <p id="sam"></p>
+
+                </div>
+                <button type="submit">Talk to Us →</button>
+            </form>
+        </div>
+    </div> -->
+
+</body>
+
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script>
+    const InputMobile = document.querySelector("#phone");
+    const input = window.intlTelInput(InputMobile, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+    document.querySelector("form").addEventListener("submit", check)
+    var data = [];
+    function check(event) {
+
+        event.preventDefault();
+        var email = document.querySelector("#email").value
+        var mobile = document.querySelector("#phone").value
+        if (email == "") {
+            document.getElementById('myEmail').innerHTML = "Required-field";
+            document.getElementById('sam').innerHTML = "Required-field";
+            return false;
+        }
+        if (mobile == "") {
+            document.getElementById('sam').innerHTML = "Required field";
+            return false;
+        }
+        if (mobile.length > 10 || mobile.length < 10) {
+            document.getElementById('sam').innerHTML = "You have entered an invalid Mobile number";
+            return false;
+        }
+
+
+        var obj = {
+            email: email,
+            mobile: mobile,
+            code: input
+        }
+
+        data.push(obj)
+        console.log(data)
+        localStorage.setItem("detail", JSON.stringify(data))
+        window.location.href = "./Thankyou.html"
+
+    } 
+</script>
